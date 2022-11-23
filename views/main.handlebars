@@ -5,9 +5,26 @@
         Web Development Ebook
       </h1>
       <p class="lead">learn web development front to back</p>
+       <form action="/charge" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_51H32d8DcLa5pUV8gGA2rqDBsd8F0s6BeYf7C7mE6cUSbVFHeKUG2r5MZgVcDjKSwDiEYOInjIvuKc9Hbo7t8PS6900JQtuPjBe"
+          data-amount="100"
+          data-name="Web Development Ebook"
+          data-description="Ebook written by ABC"
+          data-image="/img/marketplace.png"
+          data-locale="auto">
+        </script>
+        <script>
+          // Hide default stripe button
+          document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
+        </script>
+        <button type="submit" class="btn btn-outline-dark text-white btn-lg">Purchase For just 100/-</button>
+      </form>
      </div>
      <div class="col-md-6">
       <img src="/img/book.png" alt="" class="img-fluid" style="max-width: 100%; height: auto;">
     </div>
+    
     </div>
     </section>

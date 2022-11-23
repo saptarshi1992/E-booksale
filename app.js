@@ -26,10 +26,31 @@ app.use(bodyParser.urlencoded({
 }))
 //state static folder
 app.use(express.static(`${__dirname}/public`))
+//route::
+
 //index Route::
 app.get('/',(req,res)=>{
 res.render('main',{layout: 'index'})
 })
+
+//charge Route::
+
+app.post('/charge',(req,res)=>{
+ const amount = 100
+ stripe.customers.create({
+    email:req.body.stripeEmail,
+    source:req.body.stripeToken
+ })
+.then(customer => stripe.charges.create({
+    amount,
+    description: 'web developement Book',
+    currency:'inr',
+    customer:customer.id
+}))
+.then(charge => res.render('success',{layout: 'index'}))
+})
+
+//PORT::
 
 const port = process.env.PORT || 5000
 app.listen(port,()=>{
