@@ -5,7 +5,7 @@ const path = require('path')
 const stripe = require('stripe')(key.stripeSecretKey)
 const bodyParser = require('body-parser')
 const hbars= require('express-handlebars')
-const { stripePublishableKey } = require('./config/keys.prod')
+const { stripePublishableKey } = require('./config/keys_prod')
 
 const app = express()
 //middlewar//
@@ -32,9 +32,7 @@ app.use(express.static(`${__dirname}/public`))
 
 //index Route::
 app.get('/',(req,res)=>{
-res.render('main',{layout: 'index'},{
-    stripePublishableKey: key.stripePublishableKey
-})
+res.render('main',{layout: 'index'})
 })
 
 //charge Route::
